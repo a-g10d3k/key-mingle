@@ -1,7 +1,9 @@
+#include "key_mingle.h"
+
 char keyCodes[256][2] = { }; //array of keys to swap
 
 //this function adds a pair of keys to the array
-int addKeys (int key1, int key2){
+int addKeys (char key1, char key2){
     for (int i = 0; i < sizeof(keyCodes); i++){
         if (keyCodes[i][0] == 0){
             keyCodes[i][0] = key1;
@@ -13,10 +15,10 @@ int addKeys (int key1, int key2){
 }
 
 //this function removes a pair of keys from the array
-int removeKeys(int pair){
-    if (pair < sizeof(keyCodes)){
-        keyCodes[pair][0] = 0;
-        keyCodes[pair][1] = 0;
+int removeKeys(int p){
+    if (p < sizeof(keyCodes)){
+        keyCodes[p][0] = 0;
+        keyCodes[p][1] = 0;
         return 0;
     }
     return 1;//int pair is greater than the length of the array
