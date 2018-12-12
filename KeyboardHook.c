@@ -18,9 +18,13 @@ LRESULT __stdcall KeyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam){
 
             if(wParam == WM_KEYDOWN || wParam == WM_KEYUP){//check if the keyboad event is a keydown or keyup event
                     kbdStruct = *((KBDLLHOOKSTRUCT*)lParam);
-                    //inputs[0].ki.wVk = 0x42;//replace the keycode in the input struct with 'b'
-                    //SendInput(1, inputs, sizeof(INPUT));//send input from the input struct
-                    //return 1;//here we return one in order to prevent the keyboard event from being processed by any other process
+                    char keyCode = kbdStruct.vkCode;
+                    inputs[0].ki.wVk = searchKey(keyCode);
+                    if (inputs[0].ki.wVk != 0){
+                        SendInput(1, inputs, sizeof(INPUT));//send input from the input struct
+                        return 1;//here we return one in order to prevent the keyboard event from being processed by any other process
+                    }
+
 
             }
     }

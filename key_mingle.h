@@ -6,6 +6,7 @@ LRESULT __stdcall KeyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam);
 void SetHook(HHOOK* kbh);
 
 int addKeys (char key1, char key2);
+char searchKey(char key);
 int displayKeyPairs();
 int removeKeys(int p);
 #endif // KEY_MINGLE_H_INCLUDED
