@@ -4,11 +4,12 @@
 char keyCodes[256][2] = {0}; //array of keys to swap
 
 //this function adds a pair of keys to the array
-int addKeys (char key1, char key2){
+int addKeys (int key1, int key2){
     for (int i = 0; i < sizeof(keyCodes)/2; i++){
         if (keyCodes[i][0] == 0){
-            keyCodes[i][0] = key1;
-            keyCodes[i][1] = key2;
+            keyCodes[i][0] = (char)key1;
+            keyCodes[i][1] = (char)key2;
+            //printf("<added 0x%x and 0x%x at index %d>",keyCodes[i][0],keyCodes[i][1],i);
             return 0;
         }
     }
@@ -25,12 +26,13 @@ char searchKey(char key){
 }
 //displays all the key pairs from the keyCodes array
 int displayKeyPairs(){
+   // printf("<index 0 is 0x%x and 0x%x>",keyCodes[0][0],keyCodes[0][1]);
     for (int i = 0; i < sizeof(keyCodes)/2; i++){
         if (keyCodes[i][0] != 0){
              puts("------");
-             printf("%c (%d)", keyCodes[i][0], keyCodes[i][0]);
+             printf("%x", keyCodes[i][0]);
              putc('\n', stdout);
-             printf("%c (%d)", keyCodes[i][1], keyCodes[i][1]);
+             printf("%x", keyCodes[i][1]);
              putc('\n', stdout);
         }
     }

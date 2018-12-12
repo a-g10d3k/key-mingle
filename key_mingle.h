@@ -5,7 +5,7 @@
 LRESULT __stdcall KeyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam);
 void SetHook(HHOOK* kbh);
 
-int addKeys (char key1, char key2);
+int addKeys (int key1, int key2);
 char searchKey(char key);
 int displayKeyPairs();
 int removeKeys(int p);
