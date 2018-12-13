@@ -10,4 +10,5 @@ char searchKey(char key);
 int displayKeyPairs();
 int removeKeys(int p);
 int saveKeys();
+int loadKeys();
 #endif // KEY_MINGLE_H_INCLUDED
