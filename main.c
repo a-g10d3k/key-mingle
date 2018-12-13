@@ -32,6 +32,9 @@ int inputRemoveKeys(){
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine, int nCmdShhow){
     AllocConsole();
     window = FindWindowA("ConsoleWindowClass", NULL);
+    if (loadKeys() == 1){
+        puts("<key-mingle.dat not found, can't load settings.>");
+    }
     //ShowWindow(window,0);
 
     for (;;){
