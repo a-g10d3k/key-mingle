@@ -29,14 +29,13 @@ int displayKeyPairs(){
    // printf("<index 0 is 0x%x and 0x%x>",keyCodes[0][0],keyCodes[0][1]);
     for (int i = 0; i < sizeof(keyCodes)/2; i++){
         if (keyCodes[i][0] != 0){
-             puts("------");
+             printf("---%d---\n", i);
              printf("%x", keyCodes[i][0]);
              putc('\n', stdout);
              printf("%x", keyCodes[i][1]);
              putc('\n', stdout);
         }
     }
-    puts("-----");
     return 0;
 }
 
