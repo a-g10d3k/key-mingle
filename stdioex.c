@@ -3,5 +3,6 @@
 char get1char(){
 fflush(stdin);
 char ret = getchar();
+fflush(stdin);
 return ret;
 }
