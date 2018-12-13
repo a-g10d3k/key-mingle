@@ -1,12 +1,7 @@
 #include <stdio.h>
 #include "stdioex.h"
-
-void flushStdin(){
-while (getchar() != '\n'){}
-}
-
 char get1char(){
+fflush(stdin);
 char ret = getchar();
-flushStdin();
 return ret;
 }
