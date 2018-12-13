@@ -1,2 +1,2 @@
 # key-mingle
-An utility for reassigning keyboard buttons.
+A utility for reassigning keyboard buttons.
