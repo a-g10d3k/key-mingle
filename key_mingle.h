@@ -9,4 +9,5 @@ int addKeys (int key1, int key2);
 char searchKey(char key);
 int displayKeyPairs();
 int removeKeys(int p);
+int saveKeys();
 #endif // KEY_MINGLE_H_INCLUDED

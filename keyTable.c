@@ -30,9 +30,9 @@ int displayKeyPairs(){
     for (int i = 0; i < sizeof(keyCodes)/2; i++){
         if (keyCodes[i][0] != 0){
              printf("---%d---\n", i);
-             printf("%x", keyCodes[i][0]);
+             printf("0x%x", keyCodes[i][0]);
              putc('\n', stdout);
-             printf("%x", keyCodes[i][1]);
+             printf("0x%x", keyCodes[i][1]);
              putc('\n', stdout);
         }
     }
@@ -47,4 +47,41 @@ int removeKeys(int p){
         return 0;
     }
     return 1;//int pair is greater than the length of the array
+}
+
+//this function saves the keyCodes array to a file
+int saveKeys(){
+    FILE * dataFile;
+    char keyCodes_buffer[sizeof(keyCodes)];
+
+    if ((dataFile = fopen("./key-mingle.dat","wb")) == NULL){
+        return 1;
+    }
+
+    for(int i = 0; i < sizeof(keyCodes_buffer); i+=2){
+        keyCodes_buffer[i] = keyCodes[i/2][0];
+        keyCodes_buffer[i+1] = keyCodes[i/2][1];
+    }
+
+    fwrite(keyCodes_buffer, sizeof(char), sizeof(keyCodes_buffer), dataFile);
+    fclose(dataFile);
+    return 0;
+}
+//this function loads the keyCodes array from a file
+int loadKeys(){
+    FILE * dataFile;
+    char keyCodes_buffer[sizeof(keyCodes)];
+    if ((dataFile = fopen("./key-mingle.dat","rb")) == NULL){
+        return 1;
+    }
+
+    fread(keyCodes_buffer,sizeof(char), sizeof(keyCodes_buffer), dataFile);
+
+    for(int i = 0; i < sizeof(keyCodes_buffer); i+=2){
+       keyCodes[i/2][0] = keyCodes_buffer[i];
+       keyCodes[i/2][1] = keyCodes_buffer[i+1];
+    }
+
+    fclose(dataFile);
+    return 0;
 }
