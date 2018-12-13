@@ -20,6 +20,13 @@ int inputKeys(){
     return addKeys (key1, key2);
 }
 
+//asks the user to input the index of a key pair and then removes it
+int inputRemoveKeys(){
+    int index;
+    puts("index of the pair to be removed:");
+    scanf("%i", &index);
+    return removeKeys(index);
+}
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine, int nCmdShhow){
@@ -30,6 +37,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine
     for (;;){
         puts("a - add keys");
         puts("d - display current keys");
+        puts("r - remove keys");
         puts("s - start");
         char cliInput = get1char();
         switch (cliInput){
@@ -38,6 +46,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine
                 break;
             case 'd':
                 displayKeyPairs();
+                break;
+            case 'r':
+                inputRemoveKeys();
                 break;
             case 's':
                 goto msgloop;
