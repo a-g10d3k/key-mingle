@@ -14,10 +14,11 @@ LRESULT __stdcall KeyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam){
     inputs[0].type           = INPUT_KEYBOARD;
     inputs[0].ki.wScan       = 0;
     inputs[0].ki.dwFlags     = 0;
+    if (wParam == WM_KEYUP){inputs[0].ki.dwFlags += 2;}//add the keyup flag if the keyboard event was a keyup event
     inputs[0].ki.time        = 0;
     inputs[0].ki.dwExtraInfo = 0;
 
-            if(wParam == WM_KEYDOWN){//check if the keyboad event is a keydown event
+            if(wParam == WM_KEYDOWN || wParam == WM_KEYUP){//check if the keyboad event is a keydown event
                     kbdStruct = *((KBDLLHOOKSTRUCT*)lParam);
                     lastKey = kbdStruct.vkCode;
                     inputs[0].ki.wVk = searchKey(lastKey);
