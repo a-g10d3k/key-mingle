@@ -38,6 +38,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine
         puts("a - add keys");
         puts("d - display current keys");
         puts("r - remove keys");
+        puts("o - save keys");
         puts("s - start");
         char cliInput = get1char();
         switch (cliInput){
@@ -49,6 +50,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine
                 break;
             case 'r':
                 inputRemoveKeys();
+                break;
+            case 'o':
+                if (saveKeys() != 0){printf("saving error");}
                 break;
             case 's':
                 goto msgloop;
