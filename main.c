@@ -9,6 +9,26 @@
 HHOOK keyboardHook;
 HWND window;
 
+unsigned char prompt = 0;//prompt to be displayed, biggest bit is 1 if there is already a prompt displayed
+
+int displayPrompt(){
+    if ((prompt & 128)){return 1;}
+    switch (prompt){
+        case 1:
+            menuPrompt();
+            break;
+    }
+    return 0;
+}
+
+int menuPrompt(){
+    prompt += 128;
+    puts("a - add keys");
+    puts("d - display current keys");
+    puts("r - remove keys");
+    puts("o - save keys");
+    puts("s - start");   
+}
 
 //asks the user to input two keys and calls the addKeys function to add them to the keyCodes array
 int inputKeys(){
@@ -36,13 +56,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine
         puts("<key-mingle.dat not found, can't load settings.>");
     }
     //ShowWindow(window,0);
-
+/*
     for (;;){
-        puts("a - add keys");
-        puts("d - display current keys");
-        puts("r - remove keys");
-        puts("o - save keys");
-        puts("s - start");
         char cliInput = get1char();
         switch (cliInput){
             case 'a':
@@ -62,11 +77,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine
         }
     }
     msgloop:
-
+*/
     SetHook(&keyboardHook);
     MSG msg;
 
     while (GetMessage(&msg,NULL,0,0) > 0){
+        displayPrompt();
         TranslateMessage(&msg);
         DispatchMessage(&msg);
         }
