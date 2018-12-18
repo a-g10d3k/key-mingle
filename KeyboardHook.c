@@ -37,8 +37,11 @@ void SetHook(HHOOK* kbh){ //this creates the keyboard hook
 *kbh = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHookCallback, NULL, 0);
 }
 
-char getLastKey(){ //returns the last key and resets the lastKey variable
-    ret = lastKey;
+int resetLastKey(){
     lastKey = 0;
-    return ret;
+    return 0;
+}
+
+char getLastKey(){ //returns the last key
+    return lastKey;
 }

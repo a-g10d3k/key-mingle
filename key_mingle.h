@@ -1,9 +1,11 @@
+
 #ifndef KEY_MINGLE_H_INCLUDED
 #define KEY_MINGLE_H_INCLUDED
 #include <windows.h>
 
 LRESULT __stdcall KeyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam);
 void SetHook(HHOOK* kbh);
+int resetLastKey();
 char getLastKey();
 
 int addKeys (int key1, int key2);
