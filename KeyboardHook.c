@@ -36,3 +36,9 @@ LRESULT __stdcall KeyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam){
 void SetHook(HHOOK* kbh){ //this creates the keyboard hook
 *kbh = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardHookCallback, NULL, 0);
 }
+
+char getLastKey(){ //returns the last key and resets the lastKey variable
+    ret = lastKey;
+    lastKey = 0;
+    return ret;
+}
