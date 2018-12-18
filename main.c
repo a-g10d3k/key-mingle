@@ -9,7 +9,18 @@
 HHOOK keyboardHook;
 HWND window;
 
-unsigned char prompt = 0;//prompt to be displayed, biggest bit is 1 if there is already a prompt displayed
+unsigned char prompt = 1;//prompt to be displayed, highest bit is 1 if there is already a prompt displayed
+unsigned char inputFunction = 0;
+
+int menuPrompt(){
+    prompt += 128;
+    inputFunction = 1
+    puts("a - add keys");
+    puts("d - display current keys");
+    puts("r - remove keys");
+    puts("o - save keys");
+    puts("s - start");   
+}
 
 int displayPrompt(){
     if ((prompt & 128)){return 1;}
@@ -21,13 +32,36 @@ int displayPrompt(){
     return 0;
 }
 
-int menuPrompt(){
-    prompt += 128;
-    puts("a - add keys");
-    puts("d - display current keys");
-    puts("r - remove keys");
-    puts("o - save keys");
-    puts("s - start");   
+int mainMenuInput(char keyPress){
+    switch (keyPress){
+        case 0x41:
+            //add keys
+            break;
+        case 0x44:
+            //display keys
+            break;
+        case 0x52:
+            //remove keys
+            break;
+        case 0x4F:
+            //save settings
+            break;
+        case 0x53:
+            //start
+            break;
+    }
+    return 0;   
+}
+
+int readInput(){
+    char keyPress = getLastKey();
+    switch (inputFunciton){
+        case 1:
+            mainMenuInput(keyPress);
+            break;
+            
+    }
+    return 1;
 }
 
 //asks the user to input two keys and calls the addKeys function to add them to the keyCodes array
@@ -83,6 +117,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine
 
     while (GetMessage(&msg,NULL,0,0) > 0){
         displayPrompt();
+        readInput();
         TranslateMessage(&msg);
         DispatchMessage(&msg);
         }
