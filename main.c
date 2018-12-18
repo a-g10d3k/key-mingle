@@ -13,7 +13,7 @@ unsigned char prompt = 1;//prompt to be displayed, highest bit is 1 if there is 
 unsigned char inputFunction = 0;
 
 int menuPrompt(){
-    prompt += 128;
+    prompt = 129;
     inputFunction = 1
     puts("a - add keys");
     puts("d - display current keys");
@@ -28,6 +28,9 @@ int displayPrompt(){
         case 1:
             menuPrompt();
             break;
+        case 10:
+            
+            break;
     }
     return 0;
 }
@@ -35,7 +38,7 @@ int displayPrompt(){
 int mainMenuInput(char keyPress){
     switch (keyPress){
         case 0x41:
-            //add keys
+            inputFunction = 10;
             break;
         case 0x44:
             //display keys
@@ -53,11 +56,23 @@ int mainMenuInput(char keyPress){
     return 0;   
 }
 
+int addKeyInput(){
+    if (inputFunction == 10){
+           prompt = 10;
+            
+    }
+    else if (inputFunction
+}
+
 int readInput(){
     char keyPress = getLastKey();
     switch (inputFunciton){
         case 1:
             mainMenuInput(keyPress);
+            break;
+        case 10:
+        case 11:
+            addKeyInput(keyPress);
             break;
             
     }
