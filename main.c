@@ -36,8 +36,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine
         puts("<key-mingle.dat not found, can't load settings.>");
     }
     //ShowWindow(window,0);
-
-    for (;;){
+    char breakMenuLoop = FALSE;
+    while (breakMenuLoop == FALSE){
         puts("a - add keys");
         puts("d - display current keys");
         puts("r - remove keys");
@@ -58,10 +58,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine
                 if (saveKeys() != 0){printf("saving error");}
                 break;
             case 's':
-                goto msgloop;
+                breakMenuLoop = TRUE;
+                break;
         }
     }
-    msgloop:
+    breakMenuLoop = FALSE;
 
     SetHook(&keyboardHook);
     MSG msg;
