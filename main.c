@@ -13,9 +13,9 @@ HWND window;
 //asks the user to input two keys and calls the addKeys function to add them to the keyCodes array
 int inputKeys(){
     int key1, key2;
-    puts("key 1:");
+    puts("key 1 (The one you want to bind to key 2):");
     scanf("%i", &key1);
-    puts("key 2:");
+    puts("key 2 (The one you want to bind key 1 to):");
     scanf("%i", &key2);
     return addKeys (key1, key2);
 }
