@@ -1,5 +1,7 @@
 #include "key_mingle.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 char keyCodes[256][2] = {0}; //array of keys to swap
 
@@ -16,6 +18,19 @@ int addKeys (int key1, int key2){
     return 1;//there is no free space in the array
 }
 
+void TranslateVkCode(unsigned int code, char* str, int strLength){
+    code = MapVirtualKey(code, 0);
+
+    long longCode = (long)code << 16;
+    if (GetKeyNameTextA(longCode, str, strLength) == 0){
+        sprintf(str, "0x%x", code);
+    }
+}
+
+void GetKeyCodes(KeyCodeArray* array){
+    array = &keyCodes;
+}
+
 char searchKey(char key){
     for (int i=0; i<sizeof(keyCodes)/2; i++){
         if (keyCodes[i][0] == key){
@@ -26,17 +41,29 @@ char searchKey(char key){
 }
 //displays all the key pairs from the keyCodes array
 int displayKeyPairs(){
-   // printf("<index 0 is 0x%x and 0x%x>",keyCodes[0][0],keyCodes[0][1]);
+    SetHookMode(4);
+    system("cls");
+    puts("RETURN - Main menu.");
     for (int i = 0; i < sizeof(keyCodes)/2; i++){
         if (keyCodes[i][0] != 0){
-             printf("---%d---\n", i);
-             printf("0x%x", keyCodes[i][0]);
-             putc('\n', stdout);
-             printf("0x%x", keyCodes[i][1]);
-             putc('\n', stdout);
+             printf("***%d***\n", i);
+             char keyString[30];
+             TranslateVkCode(keyCodes[i][0], &keyString, 30);
+             printf("%s\n", keyString);
+             TranslateVkCode(keyCodes[i][1], &keyString, 30);
+             printf("%s\n", keyString);
         }
     }
     return 0;
+}
+
+int displayKeyPair(int i){
+     printf("***%d***\n", i);
+     char keyString[30];
+     TranslateVkCode(keyCodes[i][0], &keyString, 30);
+     printf("%s\n", keyString);
+     TranslateVkCode(keyCodes[i][1], &keyString, 30);
+     printf("%s\n", keyString);
 }
 
 //this function removes a pair of keys from the array

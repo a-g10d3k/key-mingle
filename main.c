@@ -10,67 +10,19 @@ HHOOK keyboardHook;
 HWND window;
 
 
-//asks the user to input two keys and calls the addKeys function to add them to the keyCodes array
-int inputKeys(){
-    int key1, key2;
-    puts("key 1 (The one you want to bind to key 2):");
-    scanf("%i", &key1);
-    puts("key 2 (The one you want to bind key 1 to):");
-    scanf("%i", &key2);
-    return addKeys (key1, key2);
-}
-
-//asks the user to input the index of a key pair and then removes it
-int inputRemoveKeys(){
-    int index;
-    puts("index of the pair to be removed:");
-    scanf("%i", &index);
-    return removeKeys(index);
-}
-
-
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrefInstance, LPSTR lpCmdLine, int nCmdShhow){
     AllocConsole();
     window = FindWindowA("ConsoleWindowClass", NULL);
     if (loadKeys() == 1){
         puts("<key-mingle.dat not found, can't load settings.>");
     }
-    //ShowWindow(window,0);
-    char breakMenuLoop = FALSE;
-    while (breakMenuLoop == FALSE){
-        puts("a - add keys");
-        puts("d - display current keys");
-        puts("r - remove keys");
-        puts("o - save keys");
-        puts("s - start");
-        char cliInput = get1char();
-        switch (cliInput){
-            case 'a':
-                inputKeys();
-                break;
-            case 'd':
-                displayKeyPairs();
-                break;
-            case 'r':
-                inputRemoveKeys();
-                break;
-            case 'o':
-                if (saveKeys() != 0){printf("saving error");}
-                break;
-            case 's':
-                breakMenuLoop = TRUE;
-                break;
-        }
-    }
-    breakMenuLoop = FALSE;
 
     SetHook(&keyboardHook);
-    MSG msg;
 
-    while (GetMessage(&msg,NULL,0,0) > 0){
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-        }
+    //ShowWindow(window,0);
+    MainMenu();
+
+    StartMessageLoop(2);
 
     return 0;
 }
