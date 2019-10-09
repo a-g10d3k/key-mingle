@@ -83,8 +83,7 @@ LRESULT __stdcall KeyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam){
                                 break;
                             case VK_RETURN:
                                 removeKeys(keyPairIndex);
-                                MainMenu();
-                                keyPairIndex = 0;
+                                RemoveKeysMenu(keyPairIndex);
                                 break;
                             case VK_ESCAPE:
                                 MainMenu();
