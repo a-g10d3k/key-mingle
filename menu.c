@@ -5,6 +5,7 @@
 
 void MainMenu(){
     system("cls");
+    printf("key-mingle v%s\n", KEY_MINGLE_VERSION);
     puts("a - add keys");
     puts("d - display current keys");
     puts("r - remove keys");

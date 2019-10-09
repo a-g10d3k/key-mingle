@@ -1,6 +1,7 @@
 #ifndef KEY_MINGLE_H_INCLUDED
 #define KEY_MINGLE_H_INCLUDED
 #define _WIN32_WINNT 0x0500
+#define KEY_MINGLE_VERSION "1.0"
 #include <windows.h>
 typedef char KeyCodeArray[256][2];
 
