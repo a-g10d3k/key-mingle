@@ -85,7 +85,10 @@ LRESULT __stdcall KeyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam){
                                 removeKeys(keyPairIndex);
                                 MainMenu();
                                 keyPairIndex = 0;
-                                SetHookMode(2);
+                                break;
+                            case VK_ESCAPE:
+                                MainMenu();
+                                keyPairIndex = 0;
                                 break;
                         }
                     }
@@ -93,7 +96,7 @@ LRESULT __stdcall KeyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam){
                 case 4:
                     if(wParam == WM_KEYDOWN){
                         kbdStruct = *((KBDLLHOOKSTRUCT*)lParam);
-                        if (kbdStruct.vkCode == VK_RETURN){
+                        if (kbdStruct.vkCode == VK_ESCAPE){
                             MainMenu();
                         }
                     }

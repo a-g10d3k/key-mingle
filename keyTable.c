@@ -43,7 +43,7 @@ char searchKey(char key){
 int displayKeyPairs(){
     SetHookMode(4);
     system("cls");
-    puts("RETURN - Main menu.");
+    puts("ESC - Main menu.");
     for (int i = 0; i < sizeof(keyCodes)/2; i++){
         if (keyCodes[i][0] != 0){
              printf("***%d***\n", i);

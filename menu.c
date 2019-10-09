@@ -22,8 +22,9 @@ void AddKeysMenu(){
 void RemoveKeysMenu(unsigned char index){
     system("cls");
     SetHookMode(3);
-    puts("UP/Down - Select pair.");
-    puts("RETURN - Remove pair.\n");
+    puts("UP/DOWN - Select pair.");
+    puts("RETURN - Remove pair.");
+    puts("ESCAPE - Return to main menu.\n");
     displayKeyPair(index);
     return index;
 }
