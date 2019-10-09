@@ -29,4 +29,4 @@ You can also save your key configuration by pressing "o" in the main menu.
 - You can view all of your mapped keys by pressing "d" in the main menu.
 
 ## License
-key-mingle is licensed under the MIT License - see the LICENSE file for details.
+key-mingle is licensed under the MIT License - see the LICENSE.md file for details.
