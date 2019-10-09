@@ -16,7 +16,7 @@ void MainMenu(){
 
 void AddKeysMenu(){
     system("cls");
-    puts("Press key 1 (The one you want to bind to key 2)");
+    puts("Press key 1 (The one you want to map to key 2)");
     SetHookMode(1);
 }
 

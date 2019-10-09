@@ -38,7 +38,7 @@ LRESULT __stdcall KeyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam){
                         if(keyInput[0] == 0){
                             keyInput[0] = kbdStruct.vkCode;
                             system("cls");
-                            puts("Press key 2 (The one you want to bind key 1 to).");
+                            puts("Press key 2 (The one you want to map key 1 to).");
                         }
                         else{
                             keyInput[1] = kbdStruct.vkCode;
