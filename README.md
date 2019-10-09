@@ -2,7 +2,8 @@
 A lightweight CLI key-mapping utility for Windows.
 
 ## Installation
-Simply extract the .exe file from the archive and you're ready to go!
+Download from here: https://github.com/d-g10d3k/key-mingle/releases/latest
+<br>Then simply extract the .exe file from the archive and you're ready to go!
 
 (I reccomend extracting it into a separate folder, because the software creates a .dat file to keep your key configuration.)
 
@@ -16,7 +17,7 @@ registered as "A".
 2. After you press the first key, you will be prompted to press the second one (in our case it's "A").
 3. Now you just need to press "s". The "A" key will be now mapped to the "B" key until you close the program.
 
-You can also save your key configuration by pressing "o" in the main menu.
+***You can also save your key configuration by pressing "o" in the main menu.***
 
 #### How to remove keys:
 1. Press "r" in the main menu.
